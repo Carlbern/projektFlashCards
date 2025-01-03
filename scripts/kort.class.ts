@@ -3,11 +3,7 @@ export class Kort {
   sprakTvaOrd: String;
   hasBeenPlayed: Boolean;
 
-  constructor(
-    sprakEttOrd: String,
-    sprakTvaOrd: String,
-    HasBeenPlayed: boolean
-  ) {
+  constructor(sprakEttOrd: String, sprakTvaOrd: String) {
     this.sprakEttOrd = sprakEttOrd;
     this.sprakTvaOrd = sprakTvaOrd;
     this.hasBeenPlayed = false;

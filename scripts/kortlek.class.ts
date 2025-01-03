@@ -1,21 +1,26 @@
-import { Kort } from "./kort.class";
+import { Kort } from "./kort.class.js";
 
 export {};
 
 export class Kortlek {
   namn: String;
   sprak: String;
-  kort?: any[];
+  kortArray?: Kort[];
 
   constructor(namn: string, sprak: string, kort?: any[]) {
     this.namn = namn;
     this.sprak = sprak;
-    this.kort = kort;
+    this.kortArray = kort;
   }
 
   printList() {
-    this.kort?.forEach((element) => {
+    this.kortArray?.forEach((element) => {
       console.log(element.sprakEttOrd);
     });
+  }
+
+  addCard(sprakEttOrd: String, sprakTvaOrd: String) {
+    let tempKort = new Kort(sprakEttOrd, sprakTvaOrd);
+    this.kortArray?.push(tempKort);
   }
 }
