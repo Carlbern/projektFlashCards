@@ -27,7 +27,7 @@ kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
 kortlekar[0].addCard("flaska", "bouteille");
 kortlekar[0].printList();
 
-kortlekar.forEach((element) => {
+/* kortlekar.forEach((element) => {
   div!.innerHTML += element.namn + "</br>";
   div!.innerHTML += element.sprak + "</br></br>";
-});
+}); */

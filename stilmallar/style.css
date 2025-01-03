@@ -1,0 +1,14 @@
+aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: solid;
+  width: 20vw;
+  height: 70vh;
+}
+.kortlek {
+  background-color: rgb(105, 31, 2);
+  margin: auto;
+  border: solid;
+  width: 5vw;
+  height: 12vh;
+}
