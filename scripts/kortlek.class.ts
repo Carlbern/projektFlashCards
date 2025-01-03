@@ -1,6 +1,8 @@
+import { Kort } from "./kort.class";
+
 export {};
 
-class Kortlek {
+export class Kortlek {
   namn: String;
   sprak: String;
   kort?: any[];
@@ -9,5 +11,11 @@ class Kortlek {
     this.namn = namn;
     this.sprak = sprak;
     this.kort = kort;
+  }
+
+  printList() {
+    this.kort?.forEach((element) => {
+      console.log(element.sprakEttOrd);
+    });
   }
 }
