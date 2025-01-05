@@ -24,6 +24,13 @@ let kortLista2 = [
 
 kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
 kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
 
 /* kortlekar.forEach((element) => {
   div!.innerHTML += element.namn + "</br>";
@@ -31,7 +38,7 @@ kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
 }); */
 
 kortlekar.forEach((element) => {
-  document.querySelector("aside")!.innerHTML += `<div class="kortlek">
+  document.getElementById("kortlekar")!.innerHTML += `<div class="kortlek">
         <div class="kortleksprak"><p>${element.sprak}</p></div>
         <div class="kortleknamn"><p>${element.namn}</p></div>
         <button class="kortleksbtn">Klicka för att spela med denna kortlek</button>

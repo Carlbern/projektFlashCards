@@ -1,0 +1,46 @@
+#main {
+  height: 100vh;
+  width: 700px;
+}
+#main h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 5%;
+}
+#playingcard {
+  background-color: hsl(97, 100%, 15%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 5px solid rgb(137, 42, 1);
+  gap: 20px;
+  width: 100%;
+  height: 94%;
+}
+#kort {
+  background-color: beige;
+  margin-top: 20px;
+  width: 400px;
+  height: 550px;
+  border: solid;
+}
+#nastaKortBtn {
+  display: none;
+}
+#spelBtns {
+  border: solid;
+  width: 300px;
+  height: 50px;
+}
+#rattKortBtn {
+  width: 40%;
+  height: 100%;
+  margin-right: 20%;
+}
+#felKortBtn {
+  width: 40%;
+  height: 100%;
+}
