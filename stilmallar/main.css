@@ -10,13 +10,15 @@
   height: 5%;
 }
 #playingcard {
-  background-color: hsl(97, 100%, 15%);
+  background-image: url("/bilder/mattaKort.jpg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  border: 5px solid rgb(137, 42, 1);
+  border-radius: 15px;
+  border: 5px solid rgb(99, 30, 0);
+  box-shadow: 2px 2px 2px 2px;
   gap: 20px;
   width: 100%;
   height: 94%;
@@ -26,13 +28,12 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  background-color: beige;
+  background-image: url("/bilder/kortFramsida.png");
+  background-size: cover;
   margin-top: 20px;
   width: 400px;
-  height: 550px;
-  border: solid;
+  height: 585px;
   border-radius: 10px;
-  box-shadow: 1.5px 1.5px 1.5px;
 }
 #sprakEttText {
   display: flex;
@@ -44,6 +45,7 @@
   font-size: 28px;
 }
 hr {
+  display: none;
   height: 2px;
   width: 70%;
   border-top: 1px solid #000000;
@@ -59,9 +61,14 @@ hr {
 }
 #nastaKortBtn {
   border: 2.5px solid black;
-  background-color: rgb(61, 239, 180);
+  display: none;
+  background-color: hsl(160, 85%, 50%);
   width: 300px;
   height: 50px;
+}
+#nastaKortBtn:hover {
+  cursor: pointer;
+  background-color: hsl(160, 85%, 70%);
 }
 #spelBtns {
   display: none;
@@ -70,14 +77,22 @@ hr {
 }
 #rattKortBtn {
   border: 2.5px solid black;
-  background-color: rgb(4, 163, 4);
+  background-color: hsl(120, 95%, 30%);
   width: 40%;
   height: 100%;
   margin-right: 20%;
 }
+#rattKortBtn:hover {
+  cursor: pointer;
+  background-color: hsl(120, 95%, 40%);
+}
 #felKortBtn {
   border: 2.5px solid black;
-  background-color: red;
+  background-color: hsl(0, 100%, 40%);
   width: 40%;
   height: 100%;
+}
+#felKortBtn:hover {
+  cursor: pointer;
+  background-color: hsl(0, 100%, 50%);
 }

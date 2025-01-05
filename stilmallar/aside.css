@@ -10,8 +10,9 @@ aside h2 {
   height: 5%;
 }
 #kortlekar {
-  background-color: hsl(97, 100%, 15%);
-  border: 5px solid rgb(137, 42, 1);
+  background-image: url(/bilder/mattaKortlekar.jpg);
+  border: 5px solid rgb(99, 30, 0);
+  box-shadow: 2px 2px 2px 2px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 0px;
