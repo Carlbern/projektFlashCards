@@ -32,3 +32,43 @@ export class Kortlek {
         document.querySelector("hr").style.display = "block";
     }
 }
+//Tar in en array som innerhåller element av typen "Kortlekar"
+//Skapar sedan div-element av varje "kortlek" som syns på hemsidan
+export function printKortlekar(kortlekar) {
+    kortlekar.forEach((element) => {
+        //Skapar huvudcontainer av kortlek
+        const CONTAINER = document.createElement("div");
+        CONTAINER.className = "kortlek";
+        //Skapar text för språk på kortlek
+        const SPRAK = document.createElement("div");
+        SPRAK.className = "kortleksprak";
+        SPRAK.innerHTML = `<p>${element.sprak}</p>`;
+        //Skapar text för namnet på kortleken
+        const NAMN = document.createElement("div");
+        NAMN.className = "kortleknamn";
+        NAMN.innerHTML = `<p>${element.namn}</p>`;
+        //Skapar knapp och en eventListener som används som är kopplat till detta specifika element
+        const BUTTON = document.createElement("button");
+        BUTTON.className = "kortleksbtn";
+        BUTTON.textContent = "Klicka för att spela med denna kortlek";
+        BUTTON.addEventListener("click", () => spelaKortleken(element));
+        //Lägger till "barnen" i huvudcontainern
+        CONTAINER.appendChild(SPRAK);
+        CONTAINER.appendChild(NAMN);
+        CONTAINER.appendChild(BUTTON);
+        //Lägger till allt inom "kortlekar" div på DOM
+        document.getElementById("kortlekar").appendChild(CONTAINER);
+    });
+}
+function spelaKortleken(kortlek) {
+    const NASTA_KNAPP = document.getElementById("nastaKortBtn");
+    const RATT_FEL_KNAPPAR = document.getElementById("spelBtns");
+    const VISA_KORT_KNAPP = document.getElementById("visaKortBtn");
+    NASTA_KNAPP.style.display = "none";
+    RATT_FEL_KNAPPAR.style.display = "none";
+    VISA_KORT_KNAPP.style.display = "block";
+    //Steg 1 Man klicka för att se rätt svar
+    VISA_KORT_KNAPP.addEventListener("click", () => { });
+    //Steg 2
+    //Steg 3
+}

@@ -1,5 +1,5 @@
 import { Kort } from "./kort.class.js";
-import { Kortlek } from "./kortlek.class.js";
+import { Kortlek, printKortlekar } from "./kortlek.class.js";
 let div = document.querySelector("div");
 let kortlekar = [];
 let kortLista = [
@@ -20,18 +20,4 @@ let kortLista2 = [
 ];
 kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
 kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista2));
-kortlekar.forEach((element) => {
-    document.getElementById("kortlekar").innerHTML += `<div class="kortlek">
-        <div class="kortleksprak"><p>${element.sprak}</p></div>
-        <div class="kortleknamn"><p>${element.namn}</p></div>
-        <button class="kortleksbtn" onclick="spelaKortleken(${element.namn})">Klicka för att spela med denna kortlek</button>
-      </div>`;
-});
-function spelaKortleken(kortlekNamn) {
-    kortlekar.forEach((element) => {
-        if (kortlekNamn === element.namn) {
-            element.spelaKortlek();
-        }
-    });
-}
-kortlekar[0].spelaKortlek();
+printKortlekar(kortlekar);
