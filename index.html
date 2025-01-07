@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="stilmallar/lagg_till.css">
     <link rel="stylesheet" href="stilmallar/style.css" />
     <link rel="stylesheet" href="stilmallar/aside.css" />
     <link rel="stylesheet" href="stilmallar/main.css" />
@@ -9,6 +10,11 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="header">
+      <button id="startSidaBtn">Startsida</button><button id="laggTillSidaBtn">Lägg Till</button>
+
+ 
+    </div>
     <div id="wrapper">
       <aside>
         <h2>KORTLEKAR</h2>
@@ -18,6 +24,7 @@
       </aside>
 
       <div id="main">
+        
         <h2>KORT</h2>
         <div id="playingcard">
           <div id="kort">
@@ -34,6 +41,36 @@
             ><button id="felKortBtn">Fel</button> 
         </div>
       </div>
+    
+    </div>
+  
+
+    <div id="laggTillKortlek">
+      <!--FORM FÖR ATT LÄGGA TILL KORTLEK-->
+      <form id="kortlekVal">
+        <h3>Lägg till en ny kortlek</h3>
+        <input type="text" class="inputEtt" placeholder="Namn på kortlek" />
+        <input
+          type="text"
+          class="inputTva"
+          placeholder="Sprak du vill öva på"
+        />
+        <input type="button" class="laggTillBtn" value="Lägg till" />
+      </form>
+
+      <!--FORM FÖR ATT LÄGGA TILL KORT-->
+      <form id="kortVal">
+        <h3>Lägg till dina kort & avsluta när du är färdig</h3>
+        <input type="text" class="inputEtt" placeholder="Ord på modersmål" />
+        <input
+          type="text"
+          class="inputTva"
+          placeholder="Ord du vill öva på"
+        />
+        <input type="button" class="laggTillBtn" value="Lägg till" />
+        <p>test - test | kortet har lagts till</p>
+        <input type="button" id="avslutaBtn" value="Avsluta" />
+      </form>
     </div>
     <script>
       var exports = {};
