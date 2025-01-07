@@ -7,6 +7,7 @@ body {
   margin: 0 auto;
   grid-template-columns: 2fr 3fr;
   width: 1440px;
+  height: 100vh;
   border: 5px solid rgb(99, 30, 0);
   border-radius: 15px;
 }

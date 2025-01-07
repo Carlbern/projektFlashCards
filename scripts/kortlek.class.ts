@@ -6,7 +6,7 @@ export class Kortlek {
   sprak: String;
   kortArray?: Kort[];
 
-  constructor(namn: string, sprak: string, kort?: any[]) {
+  constructor(namn: String, sprak: String, kort?: any[]) {
     this.namn = namn;
     this.sprak = sprak;
     this.kortArray = kort;
@@ -14,9 +14,9 @@ export class Kortlek {
 
   printList() {}
 
-  addCard(sprakEttOrd: String, sprakTvaOrd: String) {
-    let tempKort = new Kort(sprakEttOrd, sprakTvaOrd);
-    this.kortArray?.push(tempKort);
+  //Lägger till ett objekt av typen "Kort" i kortleken
+  addCard(kort: Kort) {
+    this.kortArray!.push(kort);
   }
 
   //Returnerar ett slumpmässigt ospelat object av typen "Kort"
@@ -74,6 +74,8 @@ export function printKortlekar(kortlekar: any[]) {
 
     //Lägger till allt inom "kortlekar" div på DOM
     document.getElementById("kortlekar")!.appendChild(CONTAINER);
+    console.log("Laddar kortlekar");
+    console.log(kortlekar);
   });
 }
 

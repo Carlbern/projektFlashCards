@@ -1,4 +1,3 @@
-import { Kort } from "./kort.class.js";
 export class Kortlek {
     constructor(namn, sprak, kort) {
         this.namn = namn;
@@ -6,10 +5,9 @@ export class Kortlek {
         this.kortArray = kort;
     }
     printList() { }
-    addCard(sprakEttOrd, sprakTvaOrd) {
-        var _a;
-        let tempKort = new Kort(sprakEttOrd, sprakTvaOrd);
-        (_a = this.kortArray) === null || _a === void 0 ? void 0 : _a.push(tempKort);
+    //Lägger till ett objekt av typen "Kort" i kortleken
+    addCard(kort) {
+        this.kortArray.push(kort);
     }
     //Returnerar ett slumpmässigt ospelat object av typen "Kort"
     //När det inte längre finns kort kvar i lista returneras "false"
@@ -60,6 +58,8 @@ export function printKortlekar(kortlekar) {
         CONTAINER.appendChild(BUTTON);
         //Lägger till allt inom "kortlekar" div på DOM
         document.getElementById("kortlekar").appendChild(CONTAINER);
+        console.log("Laddar kortlekar");
+        console.log(kortlekar);
     });
 }
 function spelaKortleken(kortlek) {

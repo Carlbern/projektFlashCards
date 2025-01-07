@@ -1,0 +1,58 @@
+#laggTillKortlek {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: solid blue;
+}
+#kortlekVal {
+  display: flex;
+}
+#kortVal {
+  display: none;
+}
+
+form {
+  background-image: url("/bilder/paper.jpg");
+  padding-top: 40px;
+  height: 500px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 1px;
+}
+form h3 {
+  color: black;
+}
+input[type="text"] {
+  margin: 5px;
+  width: 40%;
+  height: 30px;
+  border-radius: 5px;
+}
+.laggTillBtn {
+  background-color: hsl(160, 85%, 50%);
+  margin-top: 40px;
+  width: 50%;
+  height: 35px;
+}
+.laggTillBtn:hover {
+  cursor: pointer;
+  background-color: hsl(160, 85%, 70%);
+}
+#avslutaBtn {
+  background-color: hsl(0, 0%, 80%);
+  margin-top: 80px;
+  width: 50%;
+  height: 35px;
+}
+form p {
+  color: rgb(2, 173, 2);
+}
+#avslutaBtn:hover {
+  cursor: pointer;
+  background-color: hsl(0, 0%, 90%);
+}
