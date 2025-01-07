@@ -1,5 +1,4 @@
 import { Kort } from "./kort.class.js";
-
 export {};
 
 export class Kortlek {
@@ -13,32 +12,34 @@ export class Kortlek {
     this.kortArray = kort;
   }
 
-  printList() {
-    this.kortArray?.forEach((element) => {
-      console.log(element.sprakEttOrd);
-    });
-  }
+  printList() {}
 
   addCard(sprakEttOrd: String, sprakTvaOrd: String) {
     let tempKort = new Kort(sprakEttOrd, sprakTvaOrd);
     this.kortArray?.push(tempKort);
   }
-  slumpaKort() {}
 
-  spelaKortlek() {
-    console.log("Knappen använd");
-    document.getElementById("kort")!.innerHTML += `
-    <p id="sprakEttText">${this.kortArray![0].sprakEttOrd}</p>
-    <hr />
-    <p id="sprakTvaText">${this.kortArray![0].sprakTvaOrd}</p>
-          
-    
-      <button id="nastaKortBtn">Nästa kort</button>
-    <div id="spelBtns">
-      <button id="rattKortBtn">Rätt</button
-      ><button id="felKortBtn">Fel</button>`;
+  //Returnerar ett slumpmässigt ospelat object av typen "Kort"
+  //När det inte längre finns kort kvar i lista returneras "false"
+  slumpaKort(): any {
+    let spelbaraKort: any = [];
 
-    document.querySelector("hr")!.style.display = "block";
+    for (let i = 0; i < this.kortArray!.length; i++) {
+      if (this.kortArray![i].harSpelats == false) {
+        spelbaraKort.push(this.kortArray![i]);
+      }
+    }
+    if (spelbaraKort.length > 0) {
+      let slumpTal = Math.floor(Math.random() * spelbaraKort!.length);
+      return spelbaraKort[slumpTal];
+    } else {
+      return false;
+    }
+  }
+  aterStallKort() {
+    this.kortArray!.forEach((element) => {
+      element.harSpelats = false;
+    });
   }
 }
 
@@ -75,18 +76,77 @@ export function printKortlekar(kortlekar: any[]) {
     document.getElementById("kortlekar")!.appendChild(CONTAINER);
   });
 }
+
 function spelaKortleken(kortlek: Kortlek) {
+  resetKortHTML();
+  let poang = 0;
+  let aktuelltKort = kortlek.slumpaKort();
+  let sprakEttText = document.getElementById("sprakEttText");
+  let sprakTvaText = document.getElementById("sprakTvaText");
   const NASTA_KNAPP = document.getElementById("nastaKortBtn");
   const RATT_FEL_KNAPPAR = document.getElementById("spelBtns");
+  const RATT_KNAPP = document.getElementById("rattKortBtn");
+  const FEL_KNAPP = document.getElementById("felKortBtn");
   const VISA_KORT_KNAPP = document.getElementById("visaKortBtn");
 
   NASTA_KNAPP!.style.display = "none";
   RATT_FEL_KNAPPAR!.style.display = "none";
   VISA_KORT_KNAPP!.style.display = "block";
 
-  //Steg 1 Man klicka för att se rätt svar
-  VISA_KORT_KNAPP!.addEventListener("click", () => {});
-  //Steg 2
+  sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
 
-  //Steg 3
+  //Steg 1 - Man klickar för att se rätt svar
+  VISA_KORT_KNAPP!.addEventListener("click", () => {
+    sprakTvaText!.innerHTML = `Språk två: <br/> ${aktuelltKort.sprakTvaOrd}`;
+
+    VISA_KORT_KNAPP!.style.display = "none";
+    RATT_FEL_KNAPPAR!.style.display = "block";
+
+    aktuelltKort.harSpelats = true;
+  });
+  //Knappar byts ut mot två nya
+  //Steg 2 - Man väljer om svaret man hade var rätt eller fel
+  RATT_KNAPP?.addEventListener("click", () => {
+    if (kortlek.slumpaKort() != false) {
+      poang++;
+      console.log(poang);
+      RATT_FEL_KNAPPAR!.style.display = "none";
+      VISA_KORT_KNAPP!.style.display = "block";
+      aktuelltKort = kortlek.slumpaKort();
+      resetKortHTML();
+      sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
+    } else {
+      poang++;
+      RATT_FEL_KNAPPAR!.style.display = "none";
+      VISA_KORT_KNAPP!.style.display = "none";
+      resetKortHTML();
+      sprakEttText!.innerHTML = `Kortleken slut <br> Du hade: ${poang} av ${
+        kortlek.kortArray!.length
+      } rätt`;
+      kortlek.aterStallKort();
+    }
+  });
+  FEL_KNAPP?.addEventListener("click", () => {
+    if (kortlek.slumpaKort() != false) {
+      console.log(aktuelltKort);
+      RATT_FEL_KNAPPAR!.style.display = "none";
+      VISA_KORT_KNAPP!.style.display = "block";
+      aktuelltKort = kortlek.slumpaKort();
+      resetKortHTML();
+      sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
+    } else {
+      RATT_FEL_KNAPPAR!.style.display = "none";
+      VISA_KORT_KNAPP!.style.display = "none";
+      resetKortHTML();
+      sprakEttText!.innerHTML = `Kortleken slut <br> Du hade: ${poang} av ${
+        kortlek.kortArray!.length
+      } rätt`;
+      kortlek.aterStallKort();
+    }
+  });
+}
+
+function resetKortHTML() {
+  document.getElementById("sprakEttText")!.innerHTML = "";
+  document.getElementById("sprakTvaText")!.innerHTML = "";
 }
