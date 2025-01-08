@@ -3,13 +3,17 @@ iframe {
 }
 body {
   background-color: black;
+  margin: 0px;
 }
-#wrapper {
+#main {
   background-image: url(/bilder/bord.jpg);
-  display: grid;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 0 auto;
   grid-template-columns: 2fr 3fr;
-  width: 1440px;
+  width: 99%;
   height: 100vh;
   border: 5px solid rgb(99, 30, 0);
   border-radius: 15px;

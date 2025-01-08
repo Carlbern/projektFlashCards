@@ -1,0 +1,65 @@
+#header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 150px;
+  background-color: hsl(60, 34%, 87%);
+  margin-bottom: 20px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 1px 1px 40px white;
+}
+#headBild {
+  margin-left: 5px;
+  height: 150px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+#header h1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  align-self: flex-start;
+  text-align: center;
+}
+#headButtons {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: auto;
+  align-self: flex-end;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+#startSidaBtn {
+  background-color: hsl(0, 6%, 75%);
+  border: solid rgb(95, 95, 95);
+  border-left: none;
+  border-top: none;
+  border-top-left-radius: 10px;
+  width: 150px;
+  height: 35px;
+}
+#laggTillSidaBtn {
+  background-color: hsl(0, 6%, 75%);
+  border: solid rgb(95, 95, 95);
+  border-right: none;
+  border-top: none;
+  border-top-right-radius: 10px;
+  width: 150px;
+  height: 35px;
+}
+#startSidaBtn:hover {
+  cursor: pointer;
+  background-color: hsl(0, 6%, 85%);
+}
+#laggTillSidaBtn:hover {
+  cursor: pointer;
+  background-color: hsl(0, 6%, 85%);
+}

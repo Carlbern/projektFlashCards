@@ -1,3 +1,4 @@
+import { printKortlekar } from "./scripts.js";
 export class Kortlek {
     constructor(namn, sprak, kort) {
         this.namn = namn;
@@ -30,5 +31,13 @@ export class Kortlek {
         this.kortArray.forEach((element) => {
             element.harSpelats = false;
         });
+    }
+    taBortKortlek(kortlekar = []) {
+        for (let i = 0; i < kortlekar.length; i++) {
+            if (kortlekar[i] === this) {
+                kortlekar.splice(i, 1);
+            }
+        }
+        printKortlekar(kortlekar);
     }
 }

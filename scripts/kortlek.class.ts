@@ -1,4 +1,5 @@
 import { Kort } from "./kort.class.js";
+import { printKortlekar } from "./scripts.js";
 export {};
 
 export class Kortlek {
@@ -40,5 +41,14 @@ export class Kortlek {
     this.kortArray!.forEach((element) => {
       element.harSpelats = false;
     });
+  }
+
+  taBortKortlek(kortlekar: any = []) {
+    for (let i = 0; i < kortlekar.length; i++) {
+      if (kortlekar[i] === this) {
+        kortlekar.splice(i, 1);
+      }
+    }
+    printKortlekar!(kortlekar);
   }
 }

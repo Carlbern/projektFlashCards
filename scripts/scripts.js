@@ -6,6 +6,8 @@ let laggTillSidaBtn = document.getElementById("laggTillSidaBtn");
 let inputs = document.querySelectorAll("input[type='text']");
 let laggTillBtn = document.querySelectorAll("input[class='laggTillBtn'");
 let avslutaBtn = document.getElementById("avslutaBtn");
+let footStartSidaBtn = document.querySelectorAll("a")[0];
+let footLaggTillSidaBtn = document.querySelectorAll("a")[1];
 //ARRAY FÖR TESTING
 let kortLista = [
     new Kort("hej", "bonjour"),
@@ -15,35 +17,63 @@ let kortLista = [
     new Kort("glas", "verre"),
     new Kort("grön", "vert"),
 ];
-kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
-//ON LOAD FUNKTIONER
+//Initierar en kortlek att starta med
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+printKortlekar(kortlekar);
+//EVENT LISTENERS
 startSidaBtn === null || startSidaBtn === void 0 ? void 0 : startSidaBtn.addEventListener("click", () => {
     bytTillStartSida();
 });
 laggTillSidaBtn.addEventListener("click", () => {
     bytTillLaggTillSida();
 });
-let tempNamn;
-let tempSprak;
-let tempKortLista = [];
-console.log(laggTillBtn);
-laggTillBtn[0].addEventListener("click", () => {
-    tempNamn = inputs[0].value;
-    tempSprak = inputs[1].value;
-    document.getElementById("kortlekVal").style.display = "none";
-    document.getElementById("kortVal").style.display = "flex";
+footStartSidaBtn === null || footStartSidaBtn === void 0 ? void 0 : footStartSidaBtn.addEventListener("click", () => {
+    bytTillStartSida();
 });
-laggTillBtn[1].addEventListener("click", () => {
-    tempKortLista.push(new Kort(inputs[2].value, inputs[3].value));
+footLaggTillSidaBtn.addEventListener("click", () => {
+    bytTillLaggTillSida();
 });
-avslutaBtn === null || avslutaBtn === void 0 ? void 0 : avslutaBtn.addEventListener("click", () => {
-    kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
-    console.log("avsluta knappen");
-    console.log(kortlekar);
-});
+//FUNKTIONER
+function aktiveraKnapparLaggTill() {
+    let tempNamn;
+    let tempSprak;
+    let tempKortLista = [];
+    //knapp "lägg till kortlek"
+    laggTillBtn[0].addEventListener("click", () => {
+        if (kortlekar.length < 9) {
+            tempNamn = inputs[0].value;
+            tempSprak = inputs[1].value;
+            document.getElementById("kortlekVal").style.display = "none";
+            document.getElementById("kortVal").style.display = "flex";
+        }
+        else {
+            document.getElementById("errorText").innerHTML =
+                "Du har för många kortlekar <br> ta bort en innan du skapar fler";
+        }
+    });
+    //knapp "lägg till kort"
+    laggTillBtn[1].addEventListener("click", () => {
+        tempKortLista.push(new Kort(inputs[2].value, inputs[3].value));
+        document.getElementById("lagtTillText").textContent = `${inputs[2].value} kortet har lagts till`;
+    });
+    //knapp "avsluta"
+    avslutaBtn === null || avslutaBtn === void 0 ? void 0 : avslutaBtn.addEventListener("click", () => {
+        kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
+        document.getElementById("kortlekVal").style.display = "flex";
+        document.getElementById("kortVal").style.display = "none";
+    });
+}
 //Tar in en array som innerhåller element av typen "Kortlekar"
 //Skapar sedan div-element av varje "kortlek" som syns på hemsidan
-function printKortlekar(kortlekar) {
+export function printKortlekar(kortlekar) {
     document.getElementById("kortlekar").innerHTML = "";
     kortlekar.forEach((element) => {
         //Skapar huvudcontainer av kortlek
@@ -58,18 +88,21 @@ function printKortlekar(kortlekar) {
         NAMN.className = "kortleknamn";
         NAMN.innerHTML = `<p>${element.namn}</p>`;
         //Skapar knapp och en eventListener som används som är kopplat till detta specifika element
-        const BUTTON = document.createElement("button");
-        BUTTON.className = "kortleksbtn";
-        BUTTON.textContent = "Klicka för att spela med denna kortlek";
-        BUTTON.addEventListener("click", () => spelaKortleken(element));
+        const BUTTON_SPELA = document.createElement("button");
+        BUTTON_SPELA.className = "kortleksbtn";
+        BUTTON_SPELA.textContent = "Klicka för att spela med denna kortlek";
+        BUTTON_SPELA.addEventListener("click", () => spelaKortleken(element));
+        const BUTTON_TABORT = document.createElement("button");
+        BUTTON_TABORT.className = "kortleksbtnTaBort";
+        BUTTON_TABORT.textContent = "Ta bort denna kortlek";
+        BUTTON_TABORT.addEventListener("click", () => element.taBortKortlek(kortlekar));
         //Lägger till "barnen" i huvudcontainern
         CONTAINER.appendChild(SPRAK);
         CONTAINER.appendChild(NAMN);
-        CONTAINER.appendChild(BUTTON);
+        CONTAINER.appendChild(BUTTON_SPELA);
+        CONTAINER.appendChild(BUTTON_TABORT);
         //Lägger till allt inom "kortlekar" div på DOM
         document.getElementById("kortlekar").appendChild(CONTAINER);
-        console.log("Laddar kortlekar");
-        console.log(kortlekar);
     });
 }
 function spelaKortleken(kortlek) {
@@ -117,7 +150,6 @@ function spelaKortleken(kortlek) {
     });
     FEL_KNAPP === null || FEL_KNAPP === void 0 ? void 0 : FEL_KNAPP.addEventListener("click", () => {
         if (kortlek.slumpaKort() != false) {
-            console.log(aktuelltKort);
             RATT_FEL_KNAPPAR.style.display = "none";
             VISA_KORT_KNAPP.style.display = "block";
             aktuelltKort = kortlek.slumpaKort();
@@ -137,14 +169,16 @@ function resetKortHTML() {
     document.getElementById("sprakEttText").innerHTML = "";
     document.getElementById("sprakTvaText").innerHTML = "";
 }
-function bytTillLaggTillSida() {
-    document.getElementById("main").style.display = "none";
-    document.querySelector("aside").style.display = "none";
-    document.getElementById("laggTillKortlek").style.display = "flex";
-}
 function bytTillStartSida() {
     printKortlekar(kortlekar);
-    document.getElementById("main").style.display = "block";
+    resetKortHTML();
+    document.getElementById("spel").style.display = "block";
     document.querySelector("aside").style.display = "block";
     document.getElementById("laggTillKortlek").style.display = "none";
+}
+function bytTillLaggTillSida() {
+    aktiveraKnapparLaggTill();
+    document.getElementById("spel").style.display = "none";
+    document.querySelector("aside").style.display = "none";
+    document.getElementById("laggTillKortlek").style.display = "flex";
 }

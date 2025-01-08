@@ -1,0 +1,28 @@
+#footer {
+  background: gray;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  margin-top: 20px;
+  height: 125px;
+}
+#navigation {
+  align-self: center;
+  justify-self: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#footBild {
+  justify-self: center;
+  height: 125px;
+}
+#info {
+  margin-right: 10px;
+  text-align: right;
+  align-self: center;
+  justify-self: right;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
