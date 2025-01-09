@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="stilmallar/lagg_till.css" />
+    <link rel="stylesheet" href="stilmallar/style.css" />
+    <link rel="stylesheet" href="stilmallar/aside.css" />
+    <link rel="stylesheet" href="stilmallar/spel.css" />
+    <link rel="stylesheet" href="stilmallar/header.css" />
+    <link rel="stylesheet" href="stilmallar/footer.css" />
+
+    <script defer type="module" src="scripts/scripts.js"></script>
+    <script defer type="module" src="scripts/kort.class.js"></script>
+    <script defer type="module" src="scripts/kortlek.class.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <img src="bilder/logo.png" alt="" id="headBild" />
+        <h1>FLASHCARDS</h1>
+        <div id="headButtons">
+          <button id="startSidaBtn">Spela</button>
+          <button id="infoBtn">Hur funkar spelet?</button
+          ><button id="laggTillSidaBtn">Lägg Till kortlek</button>
+        </div>
+      </div>
+
+      <div id="main">
+        <section id="infoText"></section>
+      </div>
+      <div id="footer">
+        <section id="navigation">
+          <a href="#" onclick="bytTillStartSida();">Spela</a
+          ><a href="#" onclick="bytTillLaggTillSida()">Lägg till kortlek</a>
+        </section>
+        <img src="bilder/logo.png" alt="" id="footBild" />
+        <section id="info">
+          <span>Kyrkogatan 1</span>
+          <span>0707 71 23 82</span>
+          <span>filipbernhard@fmail.com</span>
+        </section>
+      </div>
+    </div>
+    <script>
+      var exports = {};
+    </script>
+  </body>
+</html>

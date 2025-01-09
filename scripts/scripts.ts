@@ -1,5 +1,5 @@
 import { Kort } from "./kort.class.js";
-import { Kortlek } from "./kortlek.class.js";
+import { Kortlek, spelaKortleken } from "./kortlek.class.js";
 
 let kortlekar: any = [];
 let startSidaBtn = document.getElementById("startSidaBtn");
@@ -21,17 +21,11 @@ let kortLista = [
 ];
 //Initierar en kortlek att starta med
 kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-kortlekar!.push(new Kortlek("Franska Ord1", "Franska", kortLista));
+loadKortlekar();
 printKortlekar(kortlekar);
 
 //EVENT LISTENERS
+
 startSidaBtn?.addEventListener("click", () => {
   bytTillStartSida();
 });
@@ -47,6 +41,8 @@ footLaggTillSidaBtn!.addEventListener("click", () => {
 
 //FUNKTIONER
 function aktiveraKnapparLaggTill() {
+  let errorText = document.getElementById("errorText");
+  errorText!.innerHTML = "";
   let tempNamn: String;
   let tempSprak: String;
   let tempKortLista: any = [];
@@ -55,11 +51,21 @@ function aktiveraKnapparLaggTill() {
     if (kortlekar.length < 9) {
       tempNamn = inputs[0].value;
       tempSprak = inputs[1].value;
-
-      document.getElementById("kortlekVal")!.style.display = "none";
-      document.getElementById("kortVal")!.style.display = "flex";
+      if (
+        tempNamn === undefined ||
+        tempNamn === null ||
+        tempNamn === "" ||
+        tempSprak === undefined ||
+        tempSprak === null ||
+        tempSprak === ""
+      ) {
+        errorText!.innerHTML = "Du måste fylla i båda fälten";
+      } else {
+        document.getElementById("kortlekVal")!.style.display = "none";
+        document.getElementById("kortVal")!.style.display = "flex";
+      }
     } else {
-      document.getElementById("errorText")!.innerHTML =
+      errorText!.innerHTML =
         "Du har för många kortlekar <br> ta bort en innan du skapar fler";
     }
   });
@@ -75,6 +81,8 @@ function aktiveraKnapparLaggTill() {
     kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
     document.getElementById("kortlekVal")!.style.display = "flex";
     document.getElementById("kortVal")!.style.display = "none";
+    bytTillStartSida();
+    saveKortlekar();
   });
 }
 //Tar in en array som innerhåller element av typen "Kortlekar"
@@ -119,78 +127,13 @@ export function printKortlekar(kortlekar: any[]) {
     document.getElementById("kortlekar")!.appendChild(CONTAINER);
   });
 }
-function spelaKortleken(kortlek: Kortlek) {
-  resetKortHTML();
-  let poang = 0;
-  let aktuelltKort = kortlek.slumpaKort();
-  let sprakEttText = document.getElementById("sprakEttText");
-  let sprakTvaText = document.getElementById("sprakTvaText");
-  const NASTA_KNAPP = document.getElementById("nastaKortBtn");
-  const RATT_FEL_KNAPPAR = document.getElementById("spelBtns");
-  const RATT_KNAPP = document.getElementById("rattKortBtn");
-  const FEL_KNAPP = document.getElementById("felKortBtn");
-  const VISA_KORT_KNAPP = document.getElementById("visaKortBtn");
 
-  NASTA_KNAPP!.style.display = "none";
-  RATT_FEL_KNAPPAR!.style.display = "none";
-  VISA_KORT_KNAPP!.style.display = "block";
-
-  sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
-
-  //Steg 1 - Man klickar för att se rätt svar
-  VISA_KORT_KNAPP!.addEventListener("click", () => {
-    sprakTvaText!.innerHTML = `Språk två: <br/> ${aktuelltKort.sprakTvaOrd}`;
-
-    VISA_KORT_KNAPP!.style.display = "none";
-    RATT_FEL_KNAPPAR!.style.display = "block";
-
-    aktuelltKort.harSpelats = true;
-  });
-  //Knappar byts ut mot två nya
-  //Steg 2 - Man väljer om svaret man hade var rätt eller fel
-  RATT_KNAPP?.addEventListener("click", () => {
-    if (kortlek.slumpaKort() != false) {
-      poang++;
-      console.log(poang);
-      RATT_FEL_KNAPPAR!.style.display = "none";
-      VISA_KORT_KNAPP!.style.display = "block";
-      aktuelltKort = kortlek.slumpaKort();
-      resetKortHTML();
-      sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
-    } else {
-      poang++;
-      RATT_FEL_KNAPPAR!.style.display = "none";
-      VISA_KORT_KNAPP!.style.display = "none";
-      resetKortHTML();
-      sprakEttText!.innerHTML = `Kortleken slut <br> Du hade: ${poang} av ${
-        kortlek.kortArray!.length
-      } rätt`;
-      kortlek.aterStallKort();
-    }
-  });
-  FEL_KNAPP?.addEventListener("click", () => {
-    if (kortlek.slumpaKort() != false) {
-      RATT_FEL_KNAPPAR!.style.display = "none";
-      VISA_KORT_KNAPP!.style.display = "block";
-      aktuelltKort = kortlek.slumpaKort();
-      resetKortHTML();
-      sprakEttText!.innerHTML = `Språk ett: <br/> ${aktuelltKort.sprakEttOrd}`;
-    } else {
-      RATT_FEL_KNAPPAR!.style.display = "none";
-      VISA_KORT_KNAPP!.style.display = "none";
-      resetKortHTML();
-      sprakEttText!.innerHTML = `Kortleken slut <br> Du hade: ${poang} av ${
-        kortlek.kortArray!.length
-      } rätt`;
-      kortlek.aterStallKort();
-    }
-  });
-}
-function resetKortHTML() {
+export function resetKortHTML() {
   document.getElementById("sprakEttText")!.innerHTML = "";
   document.getElementById("sprakTvaText")!.innerHTML = "";
 }
 function bytTillStartSida() {
+  loadKortlekar();
   printKortlekar(kortlekar);
   resetKortHTML();
   document.getElementById("spel")!.style.display = "block";
@@ -202,4 +145,30 @@ function bytTillLaggTillSida() {
   document.getElementById("spel")!.style.display = "none";
   document.querySelector("aside")!.style.display = "none";
   document.getElementById("laggTillKortlek")!.style.display = "flex";
+}
+
+//Källa: https://webbkurs.ei.hv.se/~pb/exempel/GJP/localstorage/
+function saveKortlekar() {
+  localStorage.setItem("sparadeKortlekar", JSON.stringify(kortlekar));
+}
+function loadKortlekar() {
+  if (localStorage.getItem("sparadeKortlekar")) {
+    kortlekar = JSON.parse(
+      localStorage.getItem("sparadeKortlekar")!,
+      konverteraJsonTillKortlek
+    );
+  }
+  console.log(kortlekar);
+}
+//Källa: https://stackoverflow.com/questions/67287257/converting-a-json-object-into-specific-type
+function konverteraJsonTillKortlek(key: any, value: any) {
+  if (value?.namn && value?.sprak && value?.kortArray) {
+    return new Kortlek(
+      value.namn,
+      value.sprak,
+      value.kortArray.map((kort: any) => new Kort(kort.svenska, kort.franska))
+    );
+  } else {
+    return value;
+  }
 }

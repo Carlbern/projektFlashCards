@@ -24,6 +24,7 @@
   grid-row-end: 2;
   align-self: flex-start;
   text-align: center;
+  text-shadow: 3px 3px 0 #fff, 3px 3px 0 #fff, 3px 3px 0 #fff, 3px 3px 0 #fff;
 }
 #headButtons {
   grid-column-start: 2;
@@ -46,6 +47,13 @@
   width: 150px;
   height: 35px;
 }
+#infoBtn {
+  background-color: hsl(0, 6%, 75%);
+  border: solid rgb(95, 95, 95);
+  border-top: none;
+  width: 150px;
+  height: 35px;
+}
 #laggTillSidaBtn {
   background-color: hsl(0, 6%, 75%);
   border: solid rgb(95, 95, 95);
@@ -56,6 +64,10 @@
   height: 35px;
 }
 #startSidaBtn:hover {
+  cursor: pointer;
+  background-color: hsl(0, 6%, 85%);
+}
+#infoBtn:hover {
   cursor: pointer;
   background-color: hsl(0, 6%, 85%);
 }

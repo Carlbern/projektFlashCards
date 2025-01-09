@@ -1,21 +1,22 @@
 #spel {
-  border: solid red;
   margin: 0 auto;
   height: 100vh;
   width: 40%;
 }
 #spel h2 {
+  color: hsl(60, 34%, 87%);
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   height: 5%;
+  /*source: copilot*/
+  text-shadow: 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000;
 }
 #kortMatta {
   background-image: url("/bilder/mattaKort.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 15px;
   border: 5px solid rgb(99, 30, 0);
@@ -28,10 +29,10 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  background-image: url("/bilder/kortFramsida.png");
+  background: url("/bilder/kortFramsida2.png") no-repeat;
   background-size: cover;
   margin-top: 20px;
-  width: 90%;
+  width: 80%;
   height: 90%;
   border-radius: 10px;
 }
@@ -42,7 +43,12 @@
   height: 50px;
   font-size: 28px;
 }
-
+#ruter {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  rotate: 45deg;
+}
 #sprakTvaText {
   text-align: center;
   margin-bottom: 40%;
@@ -54,8 +60,8 @@
   display: none;
   border: 2.5px solid black;
   background-color: hsl(240, 96%, 90%);
-  width: 300px;
-  height: 50px;
+  width: 60%;
+  height: 8%;
 }
 #visaKortBtn:hover {
   cursor: pointer;
@@ -97,7 +103,4 @@
 #felKortBtn:hover {
   cursor: pointer;
   background-color: hsl(0, 100%, 50%);
-}
-
-@media only screen and (max-width: 600px) {
 }

@@ -4,10 +4,12 @@ aside {
   width: 385px;
 }
 aside h2 {
+  color: hsl(60, 34%, 87%);
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   height: 5%;
+  text-shadow: 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000;
 }
 #kortlekar {
   background-image: url(/bilder/mattaKortlekar.jpg);
