@@ -1,8 +1,8 @@
 import { Kort } from "./kort.class.js";
-import { printKortlekar, resetKortHTML } from "./scripts.js";
+import { printKortlekar, resetKortHTML, saveKortlekar } from "./scripts.js";
 export {};
 
-let poang: number;
+let poang: number = 0;
 let aktuelltKort: any;
 let tempKortlek: Kortlek;
 let sprakEttText = document.getElementById("sprakEttText");
@@ -24,13 +24,6 @@ export class Kortlek {
     this.kortArray = kort;
   }
 
-  printList() {}
-
-  //Lägger till ett objekt av typen "Kort" i kortleken
-  addCard(kort: Kort) {
-    this.kortArray!.push(kort);
-  }
-
   //Returnerar ett slumpmässigt ospelat object av typen "Kort"
   //När det inte längre finns kort kvar i lista returneras "false"
   slumpaKort(): any {
@@ -43,7 +36,7 @@ export class Kortlek {
 
     if (spelbaraKort.length > 0) {
       let slumpTal = Math.floor(Math.random() * spelbaraKort!.length);
-      console.log(spelbaraKort);
+
       return spelbaraKort[slumpTal];
     } else {
       spelbaraKort = [];
@@ -62,6 +55,7 @@ export class Kortlek {
         kortlekar.splice(i, 1);
       }
     }
+    saveKortlekar();
     printKortlekar!(kortlekar);
   }
 }
@@ -69,7 +63,7 @@ export class Kortlek {
 export function spelaKortleken(kortlek: Kortlek) {
   resetKortHTML();
   tempKortlek = kortlek;
-  console.log("SpelakortFunktion");
+  tempKortlek.aterStallKort();
   poang = 0;
   aktuelltKort = kortlek.slumpaKort();
   NASTA_KNAPP!.style.display = "none";
@@ -80,8 +74,8 @@ export function spelaKortleken(kortlek: Kortlek) {
 }
 
 VISA_KORT_KNAPP?.addEventListener("click", () => {
+  console.log(poang);
   sprakTvaText!.innerHTML = `Språk två: <br/> ${aktuelltKort.sprakTvaOrd}`;
-
   VISA_KORT_KNAPP!.style.display = "none";
   RATT_FEL_KNAPPAR!.style.display = "block";
 

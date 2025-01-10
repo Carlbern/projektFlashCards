@@ -18,10 +18,17 @@ let kortLista = [
     new Kort("grön", "vert"),
 ];
 //Initierar en kortlek att starta med
-kortlekar.push(new Kortlek("Franska Ord1", "Franska", kortLista));
-loadKortlekar();
-printKortlekar(kortlekar);
+kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
+kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
+kortlekar.push(new Kortlek("Italienska Ord", "Italienska", kortLista));
 //EVENT LISTENERS
+window.addEventListener("DOMContentLoaded", () => {
+    if (window.location.pathname.endsWith("index.html")) {
+        localStorage.clear();
+        loadKortlekar();
+        printKortlekar(kortlekar);
+    }
+});
 startSidaBtn === null || startSidaBtn === void 0 ? void 0 : startSidaBtn.addEventListener("click", () => {
     bytTillStartSida();
 });
@@ -125,20 +132,22 @@ function bytTillStartSida() {
     document.getElementById("laggTillKortlek").style.display = "none";
 }
 function bytTillLaggTillSida() {
+    if (window.location.pathname.endsWith("info.html")) {
+        window.location.href = "index.html";
+    }
     aktiveraKnapparLaggTill();
     document.getElementById("spel").style.display = "none";
     document.querySelector("aside").style.display = "none";
     document.getElementById("laggTillKortlek").style.display = "flex";
 }
 //Källa: https://webbkurs.ei.hv.se/~pb/exempel/GJP/localstorage/
-function saveKortlekar() {
+export function saveKortlekar() {
     localStorage.setItem("sparadeKortlekar", JSON.stringify(kortlekar));
 }
 function loadKortlekar() {
     if (localStorage.getItem("sparadeKortlekar")) {
         kortlekar = JSON.parse(localStorage.getItem("sparadeKortlekar"), konverteraJsonTillKortlek);
     }
-    console.log(kortlekar);
 }
 //Källa: https://stackoverflow.com/questions/67287257/converting-a-json-object-into-specific-type
 function konverteraJsonTillKortlek(key, value) {

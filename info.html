@@ -3,8 +3,7 @@
   <head>
     <link rel="stylesheet" href="stilmallar/lagg_till.css" />
     <link rel="stylesheet" href="stilmallar/style.css" />
-    <link rel="stylesheet" href="stilmallar/aside.css" />
-    <link rel="stylesheet" href="stilmallar/spel.css" />
+    <link rel="stylesheet" href="stilmallar/infoSida.css" />
     <link rel="stylesheet" href="stilmallar/header.css" />
     <link rel="stylesheet" href="stilmallar/footer.css" />
 
@@ -23,14 +22,86 @@
         <img src="bilder/logo.png" alt="" id="headBild" />
         <h1>FLASHCARDS</h1>
         <div id="headButtons">
-          <button id="startSidaBtn">Spela</button>
-          <button id="infoBtn">Hur funkar spelet?</button
-          ><button id="laggTillSidaBtn">Lägg Till kortlek</button>
+          <a id="startSidaBtn" href="index.html">Spela</a>
+          <a id="infoBtn" href="info.html">Hur funkar spelet?</a>
         </div>
       </div>
 
-      <div id="main">
-        <section id="infoText"></section>
+      <div id="mainInfo">
+        <h2>Så funkar Flashcards</h2>
+        <section id="infoKortlekar">
+          <img
+            src="bilder/infoKortlekar.png"
+            alt="bild på ett antal spelkort som vardera har text med namn på kortleken och ett språk dem representerar"
+          />
+          <p>
+            Detta är menyn för de kortlekar som nu existerar. <br /><br />
+            För att spela spelet börjar man med att klicka på den kortleken som
+            man vill använda.
+            <br /><br />
+            Varje kortlek består av 3 element: <br /><br />
+            1. Högst upp är vilket språk kortleken använder, alltså vilket språk
+            man kommer att öva på.
+            <br />
+            <br />
+            2. Sedan är namnet på kortleken(t.ex. "Spanska ord"), här kan man ha
+            mer specifika namn om man vill t.ex. öva på ord för jobbet.
+            <br />
+            <br />
+            3. Till sist innehåller såklart kortleken ett antal kort. Detta syns
+            inte på bilden, men antalet kort i en kortlek kan variera och när du
+            skapar en egen kortlek kan du lägga till hur många du vill
+          </p>
+        </section>
+        <section id="infoKortSpel">
+          <p>
+            Nästa steg är att faktiskt öva på ord med hjälp av kortleken.
+            <br /><br />
+            Efter att ha valt vilken kortlek man vill spela med så kommer ett
+            kort från kortleken slumpas fram.
+            <br /><br />
+            Efter detta skall man gissa på vad man tror ordet är på det språk
+            man övar på. (I detta exemplet, vad är "tack" på franska?)
+            <br /><br />Efter detta klickar man på "Visa Svar", varpå man får
+            två nya val. Då får man klicka på om man hade rätt eller fel. Detta
+            fortsätter tills det att kortlekar har spelat igenom alla sina kort.
+            <br /><br />I slutet visas resultatet på hur många rätt man hade, nu
+            gäller det bara att repetera och slå sitt tidigare resultat!
+          </p>
+          <img
+            src="bilder/kortInfo1.png"
+            alt="Bild på ett kort som visar text 'Språk ett: tack' "
+          /><img
+            src="bilder/kortInfo2.png"
+            alt="Bild på ett kort som visar text 'Språk ett: tack' och under detta texten 'Språk två: merci'"
+          /><img
+            src="bilder/kortInfo3.png"
+            alt="Bild på ett kort som visar texten 'Kortleken slut Du hade 4 av 6 rätt'"
+          />
+        </section>
+        <section id="infoLaggTill">
+          <img src="bilder/laggTillInfo1.png" alt="" /><img
+            src="bilder/laggTilInfo2.png"
+            alt=""
+          />
+          <p>
+            För att lägga till en kortlek trycker man på "Lägg Till Kortlek" i
+            navigationsfältet. Här kan man skapa kortlekar fram tils det man har
+            9st totalt.
+            <br /><br />
+            Det första man gör är fylla i vad man vill döpa kortleken till(t.ex.
+            "Italienska ord för matlagning"). Sedan trycker man "Lägg till" för
+            att fortsätta.
+            <br /><br />
+            Nästa och sista steget är att fylla kortleken med kort. Här fyller
+            man första i vad ordet är på ens modersmål, och under detta fyller
+            man i vad ordet är på det språk övar på.
+            <br /><br />
+            Man kan lägga till hur många kort som helst, men när man klickar på
+            "Avsluta" så skapas kortleken och då går det inte att ta bort eller
+            lägga till kort längre.
+          </p>
+        </section>
       </div>
       <div id="footer">
         <section id="navigation">

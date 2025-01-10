@@ -1,0 +1,70 @@
+#mainInfo {
+  background-image: url(/bilder/bord.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 97%;
+  border: 5px solid rgb(99, 30, 0);
+  border-radius: 15px;
+}
+#mainInfo h2 {
+  align-self: center;
+  color: hsl(60, 34%, 87%);
+}
+
+#infoKortlekar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2%;
+}
+#infoKortlekar img {
+  height: 500px;
+  width: 250px;
+}
+#infoKortlekar p {
+  font-size: 18px;
+  color: hsl(60, 34%, 87%);
+  width: 40%;
+  display: flex;
+}
+
+#infoKortSpel {
+  border-bottom: 2px solid hsl(18, 100%, 30%);
+  border-top: 2px solid hsl(18, 100%, 30%);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#infoKortSpel img {
+  height: 350px;
+  width: 250px;
+}
+#infoKortSpel p {
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 18px;
+  color: hsl(60, 34%, 87%);
+  width: 50%;
+  display: flex;
+}
+
+#infoLaggTill {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#infoLaggTill img {
+  height: 350px;
+  width: 275px;
+}
+#infoLaggTill p {
+  font-size: 18px;
+  color: hsl(60, 34%, 87%);
+  width: 50%;
+  display: flex;
+}
