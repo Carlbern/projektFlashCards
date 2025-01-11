@@ -35,11 +35,20 @@ body {
     gap: 30px;
   }
   aside {
+    width: 70% !important;
     order: 2;
+  }
+  #kortlekar {
+    background-image: url("/bilder/mattaKortlekarMobil.jpg") !important;
+    background-size: cover !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
   }
   #spel {
     width: 70% !important;
     order: 1;
+  }
+  #kort {
+    max-width: 400px !important;
   }
   #ruter {
     height: 75px !important;

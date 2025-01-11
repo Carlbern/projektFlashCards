@@ -4,7 +4,6 @@ let kortlekar = [];
 let startSidaBtn = document.getElementById("startSidaBtn");
 let laggTillSidaBtn = document.getElementById("laggTillSidaBtn");
 let inputs = document.querySelectorAll("input[type='text']");
-let laggTillBtn = document.querySelectorAll("input[class='laggTillBtn'");
 let avslutaBtn = document.getElementById("avslutaBtn");
 let footStartSidaBtn = document.querySelectorAll("a")[0];
 let footLaggTillSidaBtn = document.querySelectorAll("a")[1];
@@ -17,17 +16,11 @@ let kortLista = [
     new Kort("glas", "verre"),
     new Kort("grön", "vert"),
 ];
-//Initierar en kortlek att starta med
-kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
-kortlekar.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
-kortlekar.push(new Kortlek("Italienska Ord", "Italienska", kortLista));
 //EVENT LISTENERS
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.endsWith("index.html")) {
         loadKortlekar();
-        console.log(localStorage.getItem("sparadeKortlekar"));
         printKortlekar(kortlekar);
-        console.log(kortlekar);
     }
 });
 startSidaBtn === null || startSidaBtn === void 0 ? void 0 : startSidaBtn.addEventListener("click", () => {
@@ -43,49 +36,56 @@ footLaggTillSidaBtn.addEventListener("click", () => {
     bytTillLaggTillSida();
 });
 //FUNKTIONER
-function aktiveraKnapparLaggTill() {
-    document.getElementById("kortlekVal").style.display = "flex";
-    let errorText = document.getElementById("errorText");
-    errorText.innerHTML = "";
-    let tempNamn;
-    let tempSprak;
-    let tempKortLista = [];
-    //knapp "lägg till kortlek"
-    laggTillBtn[0].addEventListener("click", () => {
-        if (kortlekar.length < 9) {
-            tempNamn = inputs[0].value;
-            tempSprak = inputs[1].value;
-            if (tempNamn === undefined ||
-                tempNamn === null ||
-                tempNamn === "" ||
-                tempSprak === undefined ||
-                tempSprak === null ||
-                tempSprak === "") {
-                errorText.innerHTML = "Du måste fylla i båda fälten";
-            }
-            else {
-                document.getElementById("kortlekVal").style.display = "none";
-                document.getElementById("kortVal").style.display = "flex";
-            }
+inputs[0].value = "";
+inputs[1].value = "";
+let errorText = document.getElementById("errorText");
+errorText.innerHTML = "";
+let laggTillBtn = document.querySelectorAll("input[class='laggTillBtn'");
+let tempNamn;
+let tempSprak;
+let tempKortLista = [];
+//knapp "lägg till kortlek"
+laggTillBtn[0].addEventListener("click", () => {
+    console.log("Körts1");
+    if (kortlekar.length < 9) {
+        tempNamn = inputs[0].value;
+        tempSprak = inputs[1].value;
+        inputs[0].value = "";
+        inputs[1].value = "";
+        if (tempNamn === undefined ||
+            tempNamn === null ||
+            tempNamn === "" ||
+            tempSprak === undefined ||
+            tempSprak === null ||
+            tempSprak === "") {
+            errorText.innerHTML = "Du måste fylla i båda fälten";
         }
         else {
-            errorText.innerHTML =
-                "Du har för många kortlekar <br> ta bort en innan du skapar fler";
+            document.getElementById("kortlekVal").style.display = "none";
+            document.getElementById("kortVal").style.display = "flex";
         }
-    });
-    //knapp "lägg till kort"
-    laggTillBtn[1].addEventListener("click", () => {
-        tempKortLista.push(new Kort(inputs[2].value, inputs[3].value));
-        document.getElementById("lagtTillText").textContent = `${inputs[2].value} kortet har lagts till`;
-    });
-    //knapp "avsluta"
-    avslutaBtn === null || avslutaBtn === void 0 ? void 0 : avslutaBtn.addEventListener("click", () => {
-        kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
-        document.getElementById("kortVal").style.display = "none";
-        saveKortlekar();
-        bytTillStartSida();
-    });
-}
+    }
+    else {
+        errorText.innerHTML =
+            "Du har för många kortlekar <br> ta bort en innan du skapar fler";
+    }
+});
+//knapp "lägg till kort"
+laggTillBtn[1].addEventListener("click", () => {
+    console.log("Körts2");
+    tempKortLista.push(new Kort(inputs[2].value, inputs[3].value));
+    document.getElementById("lagtTillText").textContent = `${inputs[2].value} kortet har lagts till`;
+});
+//knapp "avsluta"
+avslutaBtn === null || avslutaBtn === void 0 ? void 0 : avslutaBtn.addEventListener("click", () => {
+    console.log("Körts3");
+    kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
+    console.log(tempNamn, tempSprak, tempKortLista);
+    document.getElementById("kortlekVal").style.display = "flex";
+    document.getElementById("kortVal").style.display = "none";
+    saveKortlekar();
+    bytTillStartSida();
+});
 //Tar in en array som innerhåller element av typen "Kortlekar"
 //Skapar sedan div-element av varje "kortlek" som syns på hemsidan
 export function printKortlekar(kortlekar) {
@@ -136,14 +136,12 @@ function bytTillLaggTillSida() {
     if (window.location.pathname.endsWith("info.html")) {
         window.location.href = "index.html";
     }
-    aktiveraKnapparLaggTill();
     document.getElementById("spel").style.display = "none";
     document.querySelector("aside").style.display = "none";
     document.getElementById("laggTillKortlek").style.display = "flex";
 }
 //Källa: https://webbkurs.ei.hv.se/~pb/exempel/GJP/localstorage/
 export function saveKortlekar() {
-    console.log("sparar");
     localStorage.setItem("sparadeKortlekar", JSON.stringify(kortlekar));
 }
 function loadKortlekar() {
