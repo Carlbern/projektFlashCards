@@ -26,14 +26,15 @@ let kortLista = [
   new Kort("hej", "bonjour"),
   new Kort("tack", "merci"),
   new Kort("välkommen", "bienvenue"),
-  new Kort("tv", "télé"),
+  new Kort("tv", "télévision"),
   new Kort("glas", "verre"),
   new Kort("grön", "vert"),
 ];
+//Kortlek att starta med första gången man startar applikationen
+kortlekar.push(new Kortlek("Franska Ord", "Franska", kortLista));
 
 //EVENT LISTENERS
-
-//När index-sidan laddas körs denna kord
+//När index-sidan laddas körs denna kod
 window.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.endsWith("index.html")) {
     loadKortlekar();
@@ -58,14 +59,17 @@ footLaggTillSidaBtn!.addEventListener("click", () => {
 });
 
 //KNAPPAR FÖR ATT LÄGGA TILL KORTLEK
-
 //knapp "lägg till kortlek"
 laggTillBtn[0].addEventListener("click", () => {
+  //Kollar att man inte har fler än 9 kortlekar (nuvarande max mängden)
   if (kortlekar.length < 9) {
+    //Skapar temporära variabler
     tempNamn = inputs[0].value;
     tempSprak = inputs[1].value;
+    //Tömmer textfält på eventuell text
     inputs[0].value = "";
     inputs[1].value = "";
+    //Om båda fälten är ifyllda så skrivs error text ut
     if (
       tempNamn === undefined ||
       tempNamn === null ||
@@ -75,37 +79,47 @@ laggTillBtn[0].addEventListener("click", () => {
       tempSprak === ""
     ) {
       errorText!.innerHTML = "Du måste fylla i båda fälten";
-    } else {
+    }
+    //Denna menyn tas bort och nästa steg visas
+    else {
       document.getElementById("kortlekVal")!.style.display = "none";
       document.getElementById("kortVal")!.style.display = "flex";
     }
-  } else {
+  }
+  //Ifall man redan har 9 stycken kortlekar ombeds man ta bort en innan man kan skapa ny
+  else {
     errorText!.innerHTML =
       "Du har för många kortlekar <br> ta bort en innan du skapar fler";
   }
 });
 //knapp "lägg till kort"
 laggTillBtn[1].addEventListener("click", () => {
+  //Skapar nytt kort med informationen ifyllt i input element
   tempKortLista.push(new Kort(inputs[2].value, inputs[3].value));
+  //Skriver ut text som konfirmerar att kortet har lagts till som det ska
   document.getElementById(
     "lagtTillText"
   )!.textContent = `${inputs[2].value} kortet har lagts till`;
+  //Tömmer textrutorna på text
+  inputs[2].value = "";
+  inputs[3].value = "";
 });
 //knapp "avsluta"
 avslutaBtn?.addEventListener("click", () => {
+  //Skapar ny kortlek i "officiella" arrayen med den informationen som blivit ifylld
   kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
-  console.log(tempNamn, tempSprak, tempKortLista);
+  //Byter tillbaka så att första sidan visas igen
   document.getElementById("kortlekVal")!.style.display = "flex";
   document.getElementById("kortVal")!.style.display = "none";
-  inputs[0].value = "";
-  inputs[1].value = "";
+  //Återställer error texten
   errorText!.innerHTML = "";
+  //Sparar och uppdaterar localStorage
   saveKortlekar();
+  //Byter tillbaka till startsidan
   bytTillStartSida();
 });
 
 //FUNKTIONER
-
 //Tar in en array som innerhåller element av typen "Kortlekar"
 //Skapar sedan div-element av varje "kortlek" som sedan syns på hemsidan
 export function printKortlekar(kortlekar: any[]) {
@@ -125,12 +139,13 @@ export function printKortlekar(kortlekar: any[]) {
     NAMN.className = "kortleknamn";
     NAMN.innerHTML = `<p>${element.namn}</p>`;
 
-    //Skapar knapp och en eventListener som används som är kopplat till detta specifika element
+    //Skapar knapp och en eventListener för att starta spelet med denna kortlek
     const BUTTON_SPELA = document.createElement("button");
     BUTTON_SPELA.className = "kortleksbtn";
     BUTTON_SPELA.textContent = "Klicka för att spela med denna kortlek";
     BUTTON_SPELA.addEventListener("click", () => spelaKortleken(element));
 
+    //Skapar knapp och en eventListener för att ta bort denna kortlek
     const BUTTON_TABORT = document.createElement("button");
     BUTTON_TABORT.className = "kortleksbtnTaBort";
     BUTTON_TABORT.textContent = "Ta bort denna kortlek";
@@ -185,7 +200,6 @@ function loadKortlekar() {
     );
   }
 }
-
 //Ser till att JSON objekten översätts till objekt av typen "Kortlek"
 //Källa: https://stackoverflow.com/questions/67287257/converting-a-json-object-into-specific-type
 //       https://www.w3schools.com/jsref/jsref_map.asp
