@@ -30,9 +30,10 @@ aside h2 {
   box-shadow: 2px 2px 2px 2px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   margin-top: 0px;
   width: 100%;
-  height: 94%;
+  height: 90%;
   border-radius: 5px;
 }
 .kortlek {

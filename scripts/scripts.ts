@@ -19,6 +19,7 @@ let kortLista = [
   new Kort("glas", "verre"),
   new Kort("grön", "vert"),
 ];
+
 //Initierar en kortlek att starta med
 kortlekar!.push(new Kortlek("Franska Ord", "Franska", kortLista));
 kortlekar!.push(new Kortlek("Spanska Ord", "Spanska", kortLista));
@@ -26,9 +27,10 @@ kortlekar!.push(new Kortlek("Italienska Ord", "Italienska", kortLista));
 //EVENT LISTENERS
 window.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.endsWith("index.html")) {
-    localStorage.clear();
     loadKortlekar();
+    console.log(localStorage.getItem("sparadeKortlekar"));
     printKortlekar(kortlekar);
+    console.log(kortlekar);
   }
 });
 startSidaBtn?.addEventListener("click", () => {
@@ -46,6 +48,7 @@ footLaggTillSidaBtn!.addEventListener("click", () => {
 
 //FUNKTIONER
 function aktiveraKnapparLaggTill() {
+  document.getElementById("kortlekVal")!.style.display = "flex";
   let errorText = document.getElementById("errorText");
   errorText!.innerHTML = "";
   let tempNamn: String;
@@ -84,10 +87,9 @@ function aktiveraKnapparLaggTill() {
   //knapp "avsluta"
   avslutaBtn?.addEventListener("click", () => {
     kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
-    document.getElementById("kortlekVal")!.style.display = "flex";
     document.getElementById("kortVal")!.style.display = "none";
-    bytTillStartSida();
     saveKortlekar();
+    bytTillStartSida();
   });
 }
 //Tar in en array som innerhåller element av typen "Kortlekar"
@@ -157,6 +159,7 @@ function bytTillLaggTillSida() {
 
 //Källa: https://webbkurs.ei.hv.se/~pb/exempel/GJP/localstorage/
 export function saveKortlekar() {
+  console.log("sparar");
   localStorage.setItem("sparadeKortlekar", JSON.stringify(kortlekar));
 }
 function loadKortlekar() {
@@ -168,12 +171,15 @@ function loadKortlekar() {
   }
 }
 //Källa: https://stackoverflow.com/questions/67287257/converting-a-json-object-into-specific-type
+//       https://www.w3schools.com/jsref/jsref_map.asp
 function konverteraJsonTillKortlek(key: any, value: any) {
-  if (value?.namn && value?.sprak && value?.kortArray) {
+  if (value.namn && value.sprak && value.kortArray) {
     return new Kortlek(
       value.namn,
       value.sprak,
-      value.kortArray.map((kort: any) => new Kort(kort.svenska, kort.franska))
+      value.kortArray.map(
+        (kort: Kort) => new Kort(kort.sprakEttOrd, kort.sprakTvaOrd)
+      )
     );
   } else {
     return value;

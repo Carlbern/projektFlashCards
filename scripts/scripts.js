@@ -24,9 +24,10 @@ kortlekar.push(new Kortlek("Italienska Ord", "Italienska", kortLista));
 //EVENT LISTENERS
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.endsWith("index.html")) {
-        localStorage.clear();
         loadKortlekar();
+        console.log(localStorage.getItem("sparadeKortlekar"));
         printKortlekar(kortlekar);
+        console.log(kortlekar);
     }
 });
 startSidaBtn === null || startSidaBtn === void 0 ? void 0 : startSidaBtn.addEventListener("click", () => {
@@ -43,6 +44,7 @@ footLaggTillSidaBtn.addEventListener("click", () => {
 });
 //FUNKTIONER
 function aktiveraKnapparLaggTill() {
+    document.getElementById("kortlekVal").style.display = "flex";
     let errorText = document.getElementById("errorText");
     errorText.innerHTML = "";
     let tempNamn;
@@ -79,10 +81,9 @@ function aktiveraKnapparLaggTill() {
     //knapp "avsluta"
     avslutaBtn === null || avslutaBtn === void 0 ? void 0 : avslutaBtn.addEventListener("click", () => {
         kortlekar.push(new Kortlek(tempNamn, tempSprak, tempKortLista));
-        document.getElementById("kortlekVal").style.display = "flex";
         document.getElementById("kortVal").style.display = "none";
-        bytTillStartSida();
         saveKortlekar();
+        bytTillStartSida();
     });
 }
 //Tar in en array som innerhåller element av typen "Kortlekar"
@@ -142,6 +143,7 @@ function bytTillLaggTillSida() {
 }
 //Källa: https://webbkurs.ei.hv.se/~pb/exempel/GJP/localstorage/
 export function saveKortlekar() {
+    console.log("sparar");
     localStorage.setItem("sparadeKortlekar", JSON.stringify(kortlekar));
 }
 function loadKortlekar() {
@@ -150,9 +152,10 @@ function loadKortlekar() {
     }
 }
 //Källa: https://stackoverflow.com/questions/67287257/converting-a-json-object-into-specific-type
+//       https://www.w3schools.com/jsref/jsref_map.asp
 function konverteraJsonTillKortlek(key, value) {
-    if ((value === null || value === void 0 ? void 0 : value.namn) && (value === null || value === void 0 ? void 0 : value.sprak) && (value === null || value === void 0 ? void 0 : value.kortArray)) {
-        return new Kortlek(value.namn, value.sprak, value.kortArray.map((kort) => new Kort(kort.svenska, kort.franska)));
+    if (value.namn && value.sprak && value.kortArray) {
+        return new Kortlek(value.namn, value.sprak, value.kortArray.map((kort) => new Kort(kort.sprakEttOrd, kort.sprakTvaOrd)));
     }
     else {
         return value;

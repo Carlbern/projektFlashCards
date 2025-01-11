@@ -74,7 +74,6 @@ export function spelaKortleken(kortlek: Kortlek) {
 }
 
 VISA_KORT_KNAPP?.addEventListener("click", () => {
-  console.log(poang);
   sprakTvaText!.innerHTML = `Språk två: <br/> ${aktuelltKort.sprakTvaOrd}`;
   VISA_KORT_KNAPP!.style.display = "none";
   RATT_FEL_KNAPPAR!.style.display = "block";
