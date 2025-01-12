@@ -41,7 +41,6 @@ body {
   #kortlekar {
     background-image: url("/bilder/mattaKortlekarMobil.jpg") !important;
     background-size: cover !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
   }
   #spel {
     width: 70% !important;
@@ -77,5 +76,16 @@ body {
   }
   #infoLaggTill img {
     order: 2 !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #headBild {
+    display: none;
+  }
+  #spel {
+    width: 95% !important;
+  }
+  aside {
+    width: 90% !important;
   }
 }
