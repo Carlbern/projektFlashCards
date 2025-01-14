@@ -5,11 +5,12 @@
 }
 #spel h2 {
   color: hsl(60, 34%, 87%);
+  font-size: 24px;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   height: 5%;
-  /*source: copilot*/
+  /*källa: microsoft copilot*/
   text-shadow: 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000;
 }
 #kortMatta {

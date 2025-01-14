@@ -1,12 +1,13 @@
 aside {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   height: 100vh;
   width: 385px;
 }
 aside h2 {
   color: hsl(60, 34%, 87%);
+  font-size: 24px;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;

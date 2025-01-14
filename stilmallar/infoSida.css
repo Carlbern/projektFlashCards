@@ -11,6 +11,7 @@
 #mainInfo h2 {
   align-self: center;
   color: hsl(60, 34%, 87%);
+  font-size: 24px;
 }
 
 #infoKortlekar {
