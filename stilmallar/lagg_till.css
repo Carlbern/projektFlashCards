@@ -1,10 +1,6 @@
+/*Huvud Div för hela "Lägg till" delen av sidan*/
 #laggTillKortlek {
-  grid-column-start: 1;
-  grid-column-end: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  margin: 0 auto;
   display: none;
 }
 #kortlekVal {
@@ -14,17 +10,17 @@
   display: none;
 }
 
+/*Själva formen med inputs och knappar*/
 form {
   background-image: url("/bilder/paper.jpg");
-  padding-top: 40px;
   height: 500px;
   width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid black 1px;
 }
 form h3 {
+  margin-top: 15%;
   color: black;
 }
 input[type="text"] {

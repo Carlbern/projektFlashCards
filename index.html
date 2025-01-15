@@ -11,6 +11,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Flashcards</title>
   </head>
 
@@ -26,12 +27,14 @@
       </div>
 
       <div id="main">
+        <!--Vänstra delen med kortlekar-->
         <aside>
           <h2>KORTLEKAR</h2>
           <button id="laggTillSidaBtn">Lägg till kortlek</button>
           <div id="kortlekar"></div>
         </aside>
 
+        <!--Högra delen med huvudspelet-->
         <div id="spel">
           <h2>KORT</h2>
           <div id="kortMatta">
@@ -41,7 +44,6 @@
               <div id="sprakTvaText"></div>
             </div>
             <button id="visaKortBtn">Visa Svar</button>
-            <button id="nastaKortBtn">Nästa kort</button>
             <div id="spelBtns">
               <button id="rattKortBtn">Rätt</button
               ><button id="felKortBtn">Fel</button>
@@ -49,6 +51,8 @@
           </div>
         </div>
 
+        <!--Del för att lägga till nya kortlekar-->
+        <!--VISAS BARA VID KNAPPTRYCK-->
         <div id="laggTillKortlek">
           <!--FORM FÖR ATT LÄGGA TILL KORTLEK-->
           <form id="kortlekVal">

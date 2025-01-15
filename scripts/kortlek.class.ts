@@ -13,7 +13,6 @@ let poang: number = 0;
 //DOM ELEMENT
 let sprakEttText = document.getElementById("sprakEttText");
 let sprakTvaText = document.getElementById("sprakTvaText");
-const NASTA_KNAPP = document.getElementById("nastaKortBtn");
 const RATT_FEL_KNAPPAR = document.getElementById("spelBtns");
 const RATT_KNAPP = document.getElementById("rattKortBtn");
 const FEL_KNAPP = document.getElementById("felKortBtn");
@@ -97,7 +96,6 @@ export function spelaKortleken(kortlek: Kortlek) {
   aktuelltKort = kortlek.slumpaKort();
 
   //Dom-element
-  NASTA_KNAPP!.style.display = "none";
   RATT_FEL_KNAPPAR!.style.display = "none";
   VISA_KORT_KNAPP!.style.display = "block";
   //Övre texten på första kortet visas
@@ -123,6 +121,7 @@ FEL_KNAPP?.addEventListener("click", () => {
   //Går vidare till nästa kort och startar om från förra steget
   gaTillNastaKort();
 });
+
 //Byter ut knapparna och återgår till steget där ett kort precis har dykt upp
 function gaTillNastaKort() {
   //Om det fortfarande finns spelbara kort i leken

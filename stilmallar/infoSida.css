@@ -1,3 +1,4 @@
+/*Huvud Div*/
 #mainInfo {
   background-image: url(/bilder/bord.jpg);
   background-size: cover;
@@ -13,7 +14,7 @@
   color: hsl(60, 34%, 87%);
   font-size: 24px;
 }
-
+/*Första sektionen*/
 #infoKortlekar {
   width: 100%;
   display: flex;
@@ -31,7 +32,7 @@
   width: 40%;
   display: flex;
 }
-
+/*Andra sektionen*/
 #infoKortSpel {
   border-bottom: 2px solid hsl(18, 100%, 30%);
   border-top: 2px solid hsl(18, 100%, 30%);
@@ -52,7 +53,7 @@
   width: 50%;
   display: flex;
 }
-
+/*Tredje sektionen*/
 #infoLaggTill {
   width: 100%;
   display: flex;

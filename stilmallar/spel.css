@@ -1,3 +1,4 @@
+/*Huvuddelen för spelet med kort, header och knappar*/
 #spel {
   margin: 0 auto;
   height: 100vh;
@@ -13,6 +14,7 @@
   /*källa: microsoft copilot*/
   text-shadow: 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000, 3px 3px 0 #000;
 }
+/*"Mattan" där kort och knappar ligger*/
 #kortMatta {
   background-image: url("/bilder/mattaKort.jpg");
   background-size: cover;
@@ -38,6 +40,7 @@
   height: 90%;
   border-radius: 10px;
 }
+/*övre text på kortet*/
 #sprakEttText {
   text-align: center;
   margin-top: 30%;
@@ -45,12 +48,14 @@
   height: 50px;
   font-size: 28px;
 }
+/*Ruter symbolen mellan texterna*/
 #ruter {
   height: 100px;
   width: 100px;
   background-color: red;
   rotate: 45deg;
 }
+/*nedre text på kortet*/
 #sprakTvaText {
   text-align: center;
   margin-bottom: 40%;
@@ -69,17 +74,7 @@
   cursor: pointer;
   background-color: hsl(240, 96%, 95%);
 }
-#nastaKortBtn {
-  border: 2.5px solid black;
-  display: none;
-  background-color: hsl(160, 85%, 50%);
-  width: 300px;
-  height: 50px;
-}
-#nastaKortBtn:hover {
-  cursor: pointer;
-  background-color: hsl(160, 85%, 70%);
-}
+
 #spelBtns {
   display: none;
   width: 300px;

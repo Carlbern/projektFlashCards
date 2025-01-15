@@ -1,3 +1,4 @@
+/*Hela aside inkl. rubrik och knapp*/
 aside {
   margin: 0 auto;
   display: flex;
@@ -25,6 +26,7 @@ aside h2 {
   cursor: pointer;
   background-color: hsl(0, 6%, 85%);
 }
+/*Innuti aside, delen med kortlekarna*/
 #kortlekar {
   background-image: url("/bilder/mattaKortlekar.jpg");
   border: 5px solid rgb(99, 30, 0);
@@ -67,7 +69,7 @@ aside h2 {
   justify-content: center;
   align-items: center;
 }
-
+/*Övre text på kort*/
 .kortleksprak {
   word-wrap: break-word;
   margin-top: 0px;
@@ -83,7 +85,7 @@ aside h2 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
+/*Nedre text på kort*/
 .kortleknamn {
   display: flex;
   justify-content: center;
