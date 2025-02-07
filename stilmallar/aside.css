@@ -28,7 +28,6 @@ aside h2 {
 }
 /*Innuti aside, delen med kortlekarna*/
 #kortlekar {
-  background-image: url("/bilder/mattaKortlekar.jpg");
   border: 5px solid rgb(99, 30, 0);
   box-shadow: 2px 2px 2px 2px;
   display: grid;
@@ -40,7 +39,7 @@ aside h2 {
   border-radius: 5px;
 }
 .kortlek {
-  background-image: url("/bilder/kort-baksida.png");
+  background-image: url("bilder/kort-baksida.png");
   margin: auto;
   margin-top: 50px;
   border-radius: 5px;

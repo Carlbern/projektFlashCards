@@ -17,7 +17,6 @@ body {
   margin: 0px;
 }
 #main {
-  background-image: url(/bilder/bord.jpg);
   background-size: cover;
   display: flex;
   flex-direction: row;
@@ -39,7 +38,7 @@ body {
     order: 2;
   }
   #kortlekar {
-    background-image: url("/bilder/mattaKortlekarMobil.jpg") !important;
+    background-image: url("bilder/mattaKortlekarMobil.jpg") !important;
     background-size: cover !important;
   }
   #spel {

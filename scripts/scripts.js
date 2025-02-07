@@ -117,6 +117,8 @@ export function printKortlekar(kortlekar) {
         //Skapar huvudcontainer av kortlek
         const CONTAINER = document.createElement("div");
         CONTAINER.className = "kortlek";
+        //Ställer in backgrundsbild för kortleken
+        CONTAINER.style.backgroundImage = "url(bilder/kort-baksida.png)";
         //Skapar text för språk på kortlek
         const SPRAK = document.createElement("div");
         SPRAK.className = "kortleksprak";
